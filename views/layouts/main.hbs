@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+
+    <!-- Do not forget to change the path to the css file -->
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+    <div class="box">
+
+        <!-- In case of error, you should display div with class "error-box" -->
+        <!-- You can choose to display the first error or all of them (error message/s in your opinion) -->
+        <!--<div class="error-box">
+            <p>Error</p>
+        </div>-->
+
+        <header class="header">
+            <article class="header-logo">
+                <!-- Do not forget to change the path to the image -->
+                <img src="/img/logo.png">
+            </article>
+            <nav class="header-nav">
+                <ul class="header-nav-list">
+
+                    <li class="header-nav-list-item active">
+                        <a href="/" class="header-nav-list-item-link active">Home Page</a>
+                    </li>
+
+                    <li class="header-nav-list-item">
+                        <a href="/all-ads" class="header-nav-list-item-link">All ads</a>
+                    </li>
+                    <!-- Logged users -->
+                    {{#if user}}
+                    <li class="header-nav-list-item">
+                        <a href="/ads/create" class="header-nav-list-item-link">Create Ad</a>
+                    </li>
+                    <li class="header-nav-list-item">
+                        <a href="/search" class="header-nav-list-item-link">Search</a>
+                    </li>
+                    <li class="header-nav-list-item">
+                        <a href="/user/logout" method="POST" class="header-nav-list-item-link">Logout</a>
+                    </li>
+                    {{else}}
+
+                    <!-- Guest users -->
+                    <li class="header-nav-list-item">
+                        <a href="/user/register" class="header-nav-list-item-link">Register</a>
+                    </li>
+                    <li class="header-nav-list-item">
+                        <a href="/user/login" class="header-nav-list-item-link">Login</a>
+                    </li>
+                    {{/if}}
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            {{#if success}}
+            <div class="success-box">
+                <h2>{{success}}</h2>
+            </div>
+            {{/if}}
+
+            {{log error}}
+            {{#if error}}
+            <div class="error-box">
+                <h2>{{error}}</h2>
+            </div>
+            {{/if}} {{{body}}}
+        </main>
+
+        <footer>
+            <p>©Js Back-End Final Exam 2022</p>
+        </footer>
+    </div>
+
+</body>
+
+</html>

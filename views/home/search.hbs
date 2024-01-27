@@ -1,0 +1,34 @@
+<!-- In case of error, you should display div with class "error-box" -->
+<!-- You can choose to display the first error or all of them (error message/s in your opinion) -->
+<!--<div class="error-box">
+            <p>Error</p>
+        </div>-->
+
+
+<form class="search" action="/search" method="POST">
+    <input type="search" name="search" value="" placeholder="Search job ad...">
+    <button type="submit" class="btn-search">
+        <!-- Do not forget to change the path to the image -->
+        <img src="/img/search-icon.png" alt="search-icon">
+        Search
+    </button>
+</form>
+
+<section id="search-page">
+    {{#if ads}}
+    <h2>Search result:</h2>
+    {{#each ads}}
+    <!--If there are a search matches, show each ad-->
+    <article class="search-page-result">
+        <p class="search-page-result-headline">Headline: {{headline}}</p>
+        <p class="search-page-result-companyName">Company Name: {{companyName}}</p>
+    </article>
+
+    {{/each}}
+    {{else}}
+    <!--If not show:-->
+    <article class="search-page-no-result">
+        <p class="search-page-no-result-message">No match found.</p>
+    </article>
+    {{/if}}
+</section>
